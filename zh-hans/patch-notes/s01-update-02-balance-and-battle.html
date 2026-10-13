@@ -7,11 +7,12 @@
 <meta name="description" content="MonChexx 的所有娃娃与更新说明">
 
 <link rel="stylesheet" href="../../assets/site.css">
-<link rel="icon" href="../../assets/icon.png">
+<link rel="icon" type="image/png" href="../../assets/icon-ffdae82d8052.png">
+<link rel="apple-touch-icon" href="../../assets/icon-ffdae82d8052.png">
 </head>
 <body>
 <header class="bar">
-  <a class="brand" href="../index.html"><img src="../../assets/icon.png" alt="" width="32" height="32"><span>MonChexx 维基</span></a>
+  <a class="brand" href="../index.html"><img src="../../assets/icon-ffdae82d8052.png" alt="" width="32" height="32"><span>MonChexx 维基</span></a>
   <nav class="sections"><a href="../index.html">娃娃</a><a href="../patch-notes/index.html" aria-current="page">更新说明</a></nav>
   <details class="languages">
     <summary aria-label="语言"><span aria-hidden="true">🌐</span> 简体中文</summary>
@@ -30,6 +31,7 @@
 </li><li>骤死阶段的开始时间由25秒调整为20秒，判定平局的时间由35秒调整为30秒。
 </li><li>射程2格及以上的娃娃，最大法力调整如下：40 → 60，50 → 75。
 </li><li>对其他娃娃发出的技能和被动效果，现在会在到达目标的瞬间生效。飞行速度因技能而异。
+</li><li>法力已满的娃娃现在会先使用技能，再进行普通攻击。攻击速度很快的娃娃也不会再推迟技能。
 </li><li>以Lv.11为基准，重新调整了所有娃娃的平衡。
 </li></ul>
 <h2>娃娃调整</h2>
@@ -64,7 +66,7 @@
 </li><li>最大法力由50调整为75。
 </li></ul>
 <h3>伏特虎</h3>
-<ul><li><strong>雷霆狩猎</strong>：伤害由攻击力的620%调整为2670%。
+<ul><li><strong>雷霆狩猎</strong>：伤害由攻击力的620%调整为2000%。
 </li></ul>
 <h3>虚影</h3>
 <ul><li><strong>暗影突袭</strong>：伤害由攻击力的400%调整为1450%。额外伤害由“生命值35%或以下时×1.8”改为“生命值10%或以下时×2”。
@@ -74,12 +76,12 @@
 <ul><li><strong>水晶爆裂</strong>：射程由2格调整为1格；对目标的伤害由魔力的400%调整为1230%，对周围敌人的伤害由200%调整为615%。
 </li></ul>
 <h3>芽芽鸟</h3>
-<ul><li><strong>阳叶祝福</strong>：治疗量由魔力的150%调整为520%。
+<ul><li><strong>阳叶祝福</strong>：治疗量由魔力的150%调整为620%。
 </li><li><strong>种子庇护所</strong>：现在种子会变成一棵立在场地上的树。芽芽鸟在开始位置种下种子，并退到相邻的一格。种子拥有相当于芽芽鸟最大生命值150%的生命值，可被敌人破坏。从5秒后（原为10秒）开始，每3秒（原为仅1次）为周围1格内的队友施加相当于战斗开始时魔力210%（原为160%）的护盾，持续4秒。芽芽鸟被击败后，树仍会留下。
 </li><li>最大法力由50调整为75。
 </li></ul>
 <h3>蜜蜜酱</h3>
-<ul><li><strong>蜜滴助威</strong>：范围由2格调整为4格，攻击速度提升由100%调整为400%。现在与自身一同获得效果的队友，由最近的1名改为本场战斗中造成伤害最多的4名。
+<ul><li><strong>蜜滴助威</strong>：范围由2格调整为4格，持续时间由6秒调整为4秒。现在不再作用于自身和最近的队友，而是只作用于本场战斗中普通攻击造成伤害最多的1名其他队友。攻击速度提升仍为100%，在此期间，该队友的普通攻击每次命中都会额外造成相当于蜜蜜酱魔力200%的魔法伤害，计为蜜蜜酱造成的伤害。
 </li><li>最大法力由50调整为40。
 </li></ul>
 <h3>回音翼</h3>
@@ -95,7 +97,7 @@
 </li></ul>
 <h3>石甲龟</h3>
 <ul><li><strong>石甲壳</strong>：防御力提升由80调整为165，魔法抗性提升由60调整为125。
-</li><li><strong>初始甲壳</strong>：战斗开始时的护盾由最大生命值的40%调整为135%。
+</li><li><strong>初始甲壳</strong>：战斗开始时的护盾由最大生命值的40%调整为170%。
 </li></ul>
 <h3>毒蜗牛</h3>
 <ul><li><strong>毒云</strong>：伤害由每秒魔力的260%调整为915%。

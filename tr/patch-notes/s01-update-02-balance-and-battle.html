@@ -9,11 +9,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/site.css">
-<link rel="icon" href="../../assets/icon.png">
+<link rel="icon" type="image/png" href="../../assets/icon-ffdae82d8052.png">
+<link rel="apple-touch-icon" href="../../assets/icon-ffdae82d8052.png">
 </head>
 <body>
 <header class="bar">
-  <a class="brand" href="../index.html"><img src="../../assets/icon.png" alt="" width="32" height="32"><span>MonChexx Vikisi</span></a>
+  <a class="brand" href="../index.html"><img src="../../assets/icon-ffdae82d8052.png" alt="" width="32" height="32"><span>MonChexx Vikisi</span></a>
   <nav class="sections"><a href="../index.html">Peluşlar</a><a href="../patch-notes/index.html" aria-current="page">Yama Notları</a></nav>
   <details class="languages">
     <summary aria-label="Dil"><span aria-hidden="true">🌐</span> Türkçe</summary>
@@ -32,6 +33,7 @@
 </li><li>Ani ölüm artık 20. saniyede başlar (önceden 25), beraberlik kararı ise 30. saniyede verilir (önceden 35).
 </li><li>Menzili 2 kare veya daha fazla olan peluşların Maksimum Manası değiştirildi: 40 → 60, 50 → 75.
 </li><li>Başka bir peluşa gönderilen aktif ve pasif yetenekler artık hedefe ulaştıkları anda etki eder. Her yeteneğin uçuş hızı farklıdır.
+</li><li>Manası dolu peluşlar artık bir sonraki temel saldırıdan önce yeteneklerini kullanır; böylece çok hızlı saldıran peluşlar yeteneklerini ertelemez.
 </li><li>Tüm peluşların dengesi Lv.11 esas alınarak yeniden ayarlandı.
 </li></ul>
 <h2>Peluş değişiklikleri</h2>
@@ -66,7 +68,7 @@
 </li><li>Maksimum Mana 50&#x27;den 75&#x27;e çıkarıldı.
 </li></ul>
 <h3>Voltiger</h3>
-<ul><li><strong>Yıldırım Avı:</strong> Hasar Saldırı Gücünün 620% oranından 2670% oranına çıkarıldı.
+<ul><li><strong>Yıldırım Avı:</strong> Hasar Saldırı Gücünün 620% oranından 2000% oranına çıkarıldı.
 </li></ul>
 <h3>Voidren</h3>
 <ul><li><strong>Gölge Baskını:</strong> Hasar Saldırı Gücünün 400% oranından 1450% oranına çıkarıldı. Ek hasar artık ×2 olup hedefin Canı 10% veya altındayken uygulanır (önceden ×1,8, Can 35% veya altındayken).
@@ -76,12 +78,12 @@
 <ul><li><strong>Kristal Patlaması:</strong> Menzil 2 kareden 1 kareye düşürüldü; hasar hedefte Büyü Gücünün 400% oranından 1230% oranına, yakındaki düşmanlarda 200% oranından 615% oranına çıkarıldı.
 </li></ul>
 <h3>Filizkuş</h3>
-<ul><li><strong>Güneşyaprağı Kutsaması:</strong> İyileştirme Büyü Gücünün 150% oranından 520% oranına çıkarıldı.
+<ul><li><strong>Güneşyaprağı Kutsaması:</strong> İyileştirme Büyü Gücünün 150% oranından 620% oranına çıkarıldı.
 </li><li><strong>Tohum Sığınağı:</strong> Tohum artık sahada duran bir ağaca dönüşür. Filizkuş tohumu başlangıç karesine eker ve yan kareye çekilir. Tohumun Canı, Filizkuş&#x27;un Maksimum Canının 150% oranındadır ve düşmanlar onu kırabilir. 5. saniyeden itibaren (önceden 10. saniyeden) ağaç her 3 saniyede bir (önceden bir kez) 1 kare mesafe içindeki müttefiklere 4 saniye boyunca, Filizkuş&#x27;un savaş başındaki Büyü Gücünün 210% oranında kalkan verir (önceden 160%). Filizkuş yenilse bile ağaç yerinde kalır.
 </li><li>Maksimum Mana 50&#x27;den 75&#x27;e çıkarıldı.
 </li></ul>
 <h3>Balreçel</h3>
-<ul><li><strong>Ballı Tezahürat:</strong> Menzil 2 kareden 4 kareye, Saldırı Hızı artışı 100% oranından 400% oranına çıkarıldı. Artık Balreçel&#x27;in yanı sıra, en yakındaki 1 müttefik yerine bu savaşta en çok hasar veren 4 müttefiki güçlendirir.
+<ul><li><strong>Ballı Tezahürat:</strong> Menzil 2 kareden 4 kareye çıkarıldı, süre 6 saniyeden 4 saniyeye düşürüldü. Artık Balreçel ve en yakındaki müttefik yerine yalnızca 1 başka müttefiki, yani bu savaşta temel saldırılarıyla en çok hasar veren müttefiki güçlendirir. Saldırı Hızı artışı 100% olarak kalır; bu sürede o müttefikin isabet eden her temel saldırısı, Balreçel&#x27;in Büyü Gücünün 200% oranında ek büyü hasarı verir ve bu hasar Balreçel&#x27;in hasarı olarak sayılır.
 </li><li>Maksimum Mana 50&#x27;den 40&#x27;a düşürüldü.
 </li></ul>
 <h3>Echowing</h3>
@@ -97,7 +99,7 @@
 </li></ul>
 <h3>Taşbağa</h3>
 <ul><li><strong>Taş Kabuk:</strong> Zırh artışı 80&#x27;den 165&#x27;e, Büyü Direnci artışı 60&#x27;tan 125&#x27;e çıkarıldı.
-</li><li><strong>İlk Kabuk:</strong> Savaş başındaki kalkan, Maksimum Canının 40% oranından 135% oranına çıkarıldı.
+</li><li><strong>İlk Kabuk:</strong> Savaş başındaki kalkan, Maksimum Canının 40% oranından 170% oranına çıkarıldı.
 </li></ul>
 <h3>Zehir Salyangoz</h3>
 <ul><li><strong>Zehir Bulutu:</strong> Hasar, saniyede Büyü Gücünün 260% oranından 915% oranına çıkarıldı.

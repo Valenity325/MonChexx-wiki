@@ -9,11 +9,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/site.css">
-<link rel="icon" href="../../assets/icon.png">
+<link rel="icon" type="image/png" href="../../assets/icon-ffdae82d8052.png">
+<link rel="apple-touch-icon" href="../../assets/icon-ffdae82d8052.png">
 </head>
 <body>
 <header class="bar">
-  <a class="brand" href="../index.html"><img src="../../assets/icon.png" alt="" width="32" height="32"><span>MonChexx 위키</span></a>
+  <a class="brand" href="../index.html"><img src="../../assets/icon-ffdae82d8052.png" alt="" width="32" height="32"><span>MonChexx 위키</span></a>
   <nav class="sections"><a href="../index.html">인형</a><a href="../patch-notes/index.html" aria-current="page">패치 노트</a></nav>
   <details class="languages">
     <summary aria-label="언어"><span aria-hidden="true">🌐</span> 한국어</summary>
@@ -32,6 +33,7 @@
 </li><li>서든 데스 시작이 25초 → 20초로, 무승부 판정이 35초 → 30초로 변경됩니다.
 </li><li>사거리 2칸 이상인 인형의 최대 마나가 40 → 60, 50 → 75로 변경됩니다.
 </li><li>다른 인형에게 보내는 스킬과 패시브는 이제 대상에게 도착하는 순간 적용됩니다. 날아가는 속도는 스킬마다 다릅니다.
+</li><li>이제 마나가 가득 찬 인형은 기본 공격보다 스킬을 먼저 사용합니다. 공격 속도가 빠른 인형도 스킬 사용이 밀리지 않습니다.
 </li><li>모든 인형의 밸런스를 Lv.11 기준으로 다시 조정했습니다.
 </li></ul>
 <h2>인형별 변경</h2>
@@ -66,7 +68,7 @@
 </li><li>최대 마나가 50 → 75로 변경됩니다.
 </li></ul>
 <h3>볼타이거</h3>
-<ul><li><strong>천둥 사냥:</strong> 피해량이 공격력의 620% → 2670%로 변경됩니다.
+<ul><li><strong>천둥 사냥:</strong> 피해량이 공격력의 620% → 2000%로 변경됩니다.
 </li></ul>
 <h3>보이드렌</h3>
 <ul><li><strong>그림자 급습:</strong> 피해량이 공격력의 400% → 1450%로 변경됩니다. 추가 피해는 이제 체력 35% 이하 1.8배에서 체력 10% 이하 2배로 바뀝니다.
@@ -76,12 +78,12 @@
 <ul><li><strong>결정 폭발:</strong> 사거리가 2칸 → 1칸으로, 피해량이 대상 마법력의 400% → 1230%, 주변 적 200% → 615%로 변경됩니다.
 </li></ul>
 <h3>싹싹새</h3>
-<ul><li><strong>햇잎 축복:</strong> 회복량이 마법력의 150% → 520%로 변경됩니다.
+<ul><li><strong>햇잎 축복:</strong> 회복량이 마법력의 150% → 620%로 변경됩니다.
 </li><li><strong>씨앗 피난처:</strong> 이제 씨앗이 코트에 서는 나무로 바뀝니다. 시작 칸에 씨앗을 심고 옆 칸으로 물러나며, 씨앗은 싹싹새 최대 체력의 150%만큼 체력을 가져 적이 부술 수 있습니다. 5초 뒤(기존 10초)부터 3초마다(기존 1회) 주변 1칸 아군에게 시작 시 마법력의 210%(기존 160%) 방패를 4초간 부여합니다. 싹싹새가 쓰러져도 나무는 남습니다.
 </li><li>최대 마나가 50 → 75로 변경됩니다.
 </li></ul>
 <h3>벌꿀잼</h3>
-<ul><li><strong>꿀방울 응원:</strong> 범위가 2칸 → 4칸으로, 공격 속도 증가가 100% → 400%로 변경됩니다. 이제 자신과 함께 적용되는 아군이 가장 가까운 1명에서 이번 전투에서 피해를 가장 많이 준 4명으로 바뀝니다.
+<ul><li><strong>꿀방울 응원:</strong> 범위가 2칸 → 4칸으로, 지속 시간이 6초 → 4초로 변경됩니다. 이제 자신과 가장 가까운 아군 대신, 기본 공격으로 피해를 가장 많이 준 다른 아군 1명에게만 적용됩니다. 공격 속도 증가는 100% 그대로이며, 그동안 그 아군의 기본 공격이 적중할 때마다 벌꿀잼 마법력의 200%만큼 마법 피해를 추가로 줍니다. 이 피해는 벌꿀잼이 준 피해로 집계됩니다.
 </li><li>최대 마나가 50 → 40으로 변경됩니다.
 </li></ul>
 <h3>에코윙</h3>
@@ -97,7 +99,7 @@
 </li></ul>
 <h3>돌부기</h3>
 <ul><li><strong>돌등껍질:</strong> 방어력 증가가 80 → 165로, 마법 저항 증가가 60 → 125로 변경됩니다.
-</li><li><strong>첫 등껍질:</strong> 전투 시작 방패가 최대 체력의 40% → 135%로 변경됩니다.
+</li><li><strong>첫 등껍질:</strong> 전투 시작 방패가 최대 체력의 40% → 170%로 변경됩니다.
 </li></ul>
 <h3>달퐁이</h3>
 <ul><li><strong>독구름:</strong> 피해량이 초당 마법력의 260% → 915%로 변경됩니다.

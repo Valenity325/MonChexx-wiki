@@ -9,11 +9,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/site.css">
-<link rel="icon" href="../../assets/icon.png">
+<link rel="icon" type="image/png" href="../../assets/icon-ffdae82d8052.png">
+<link rel="apple-touch-icon" href="../../assets/icon-ffdae82d8052.png">
 </head>
 <body>
 <header class="bar">
-  <a class="brand" href="../index.html"><img src="../../assets/icon.png" alt="" width="32" height="32"><span>MonChexx-Wiki</span></a>
+  <a class="brand" href="../index.html"><img src="../../assets/icon-ffdae82d8052.png" alt="" width="32" height="32"><span>MonChexx-Wiki</span></a>
   <nav class="sections"><a href="../index.html">Plüschtiere</a><a href="../patch-notes/index.html" aria-current="page">Patchnotes</a></nav>
   <details class="languages">
     <summary aria-label="Sprache"><span aria-hidden="true">🌐</span> Deutsch</summary>
@@ -32,6 +33,7 @@
 </li><li>Der Sudden Death beginnt jetzt nach 20 Sekunden (vorher 25), und ein Unentschieden wird nach 30 Sekunden gewertet (vorher 35).
 </li><li>Das maximale Mana von Plüschtieren mit einer Reichweite von 2 Feldern oder mehr ändert sich: 40 → 60, 50 → 75.
 </li><li>Aktive und passive Fähigkeiten, die zu einem anderen Plüschtier geschickt werden, wirken jetzt in dem Moment, in dem sie ankommen. Wie schnell sie fliegen, hängt von der Fähigkeit ab.
+</li><li>Plüschtiere mit vollem Mana setzen jetzt ihre Fähigkeit vor dem nächsten Standardangriff ein, sodass sehr schnelle Angreifer sie nicht mehr aufschieben.
 </li><li>Alle Plüschtiere wurden auf Lv.11 neu ausbalanciert.
 </li></ul>
 <h2>Änderungen an den Plüschtieren</h2>
@@ -66,7 +68,7 @@
 </li><li>Das maximale Mana ändert sich von 50 auf 75.
 </li></ul>
 <h3>Voltiger</h3>
-<ul><li><strong>Donnerjagd:</strong> Der Schaden ändert sich von 620% auf 2670% der Angriffskraft.
+<ul><li><strong>Donnerjagd:</strong> Der Schaden ändert sich von 620% auf 2000% der Angriffskraft.
 </li></ul>
 <h3>Voidren</h3>
 <ul><li><strong>Schattenüberfall:</strong> Der Schaden ändert sich von 400% auf 1450% der Angriffskraft. Der Bonusschaden beträgt jetzt ×2, wenn das Ziel 10% seiner Lebenspunkte oder weniger hat (vorher ×1,8 bei 35% oder weniger).
@@ -76,12 +78,12 @@
 <ul><li><strong>Kristallknall:</strong> Die Reichweite ändert sich von 2 Feldern auf 1 Feld, der Schaden von 400% auf 1230% der Magiekraft beim Ziel und von 200% auf 615% bei Gegnern in der Nähe.
 </li></ul>
 <h3>Sprosspiep</h3>
-<ul><li><strong>Sonnenblattsegen:</strong> Die Heilung ändert sich von 150% auf 520% der Magiekraft.
+<ul><li><strong>Sonnenblattsegen:</strong> Die Heilung ändert sich von 150% auf 620% der Magiekraft.
 </li><li><strong>Schützende Saat:</strong> Das Saatkorn wird jetzt zu einem Baum in der Arena. Sprosspiep pflanzt es auf seinem Startfeld und weicht auf ein Nachbarfeld zurück. Das Saatkorn hat Lebenspunkte in Höhe von 150% der maximalen Lebenspunkte von Sprosspiep und kann von Gegnern zerstört werden. Nach 5 Sekunden (vorher 10) und danach alle 3 Sekunden (vorher nur einmal) gewährt der Baum Verbündeten im Umkreis von 1 Feld 4 Sekunden lang einen Schild in Höhe von 210% der Magiekraft, die Sprosspiep zu Kampfbeginn hatte (vorher 160%). Der Baum bleibt stehen, auch wenn Sprosspiep besiegt wird.
 </li><li>Das maximale Mana ändert sich von 50 auf 75.
 </li></ul>
 <h3>Honigklecks</h3>
-<ul><li><strong>Honigtropfen-Jubel:</strong> Die Reichweite ändert sich von 2 auf 4 Felder, der Bonus auf das Angriffstempo von 100% auf 400%. Neben Honigklecks verstärkt die Fähigkeit jetzt die 4 Verbündeten, die in diesem Kampf den meisten Schaden verursacht haben. Bisher war es nur 1 Verbündeter, der nächstgelegene.
+<ul><li><strong>Honigtropfen-Jubel:</strong> Die Reichweite ändert sich von 2 auf 4 Felder, die Dauer von 6 auf 4 Sek. Die Fähigkeit verstärkt jetzt nur noch 1 anderen Verbündeten, nämlich den, der in diesem Kampf mit Standardangriffen den meisten Schaden verursacht hat, statt Honigklecks und den nächstgelegenen Verbündeten. Der Bonus auf das Angriffstempo bleibt bei 100%. Währenddessen fügt jeder Standardangriff dieses Verbündeten, der trifft, zusätzlich Magieschaden in Höhe von 200% der Magiekraft von Honigklecks zu; dieser Schaden zählt als Schaden von Honigklecks.
 </li><li>Das maximale Mana ändert sich von 50 auf 40.
 </li></ul>
 <h3>Echowing</h3>
@@ -97,7 +99,7 @@
 </li></ul>
 <h3>Steinschildi</h3>
 <ul><li><strong>Steinpanzer:</strong> Der Bonus auf Rüstung ändert sich von 80 auf 165, der Bonus auf Magieresistenz von 60 auf 125.
-</li><li><strong>Erster Panzer:</strong> Der Schild zu Kampfbeginn ändert sich von 40% auf 135% der maximalen Lebenspunkte.
+</li><li><strong>Erster Panzer:</strong> Der Schild zu Kampfbeginn ändert sich von 40% auf 170% der maximalen Lebenspunkte.
 </li></ul>
 <h3>Giftschnecki</h3>
 <ul><li><strong>Giftwolke:</strong> Der Schaden ändert sich von 260% auf 915% der Magiekraft pro Sekunde.
