@@ -62,8 +62,9 @@ body {
   font: 16px/1.65 "Noto Sans KR", system-ui, -apple-system, "Apple SD Gothic Neo", "Segoe UI", sans-serif;
 }
 h1, h2, h3 { line-height: 1.25; margin: 0 0 0.5em; }
+h1, h2, .brand span { font-family: "Baloo 2", system-ui, sans-serif; font-weight: 800; }
 :lang(ko) h1, :lang(ko) h2, :lang(ko) .brand span { font-family: "Black Han Sans", "Noto Sans KR", sans-serif; font-weight: 400; letter-spacing: 0.01em; }
-:lang(en) h1, :lang(en) h2, :lang(en) .brand span { font-family: "Baloo 2", system-ui, sans-serif; font-weight: 800; }
+:lang(ar) h1, :lang(ar) h2, :lang(ar) .brand span { font-family: "Baloo Bhaijaan 2", system-ui, sans-serif; }
 h3 { font-size: 1.1rem; }
 a { color: var(--accent); }
 img { max-width: 100%; height: auto; }
@@ -77,12 +78,23 @@ img { max-width: 100%; height: auto; }
 }
 .brand { display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font-size: 1.25rem; }
 .brand img { border-radius: 8px; }
-.sections, .languages { display: flex; gap: 6px; }
-.sections { flex: 1; }
-.sections a, .languages a {
+.sections { display: flex; gap: 6px; flex: 1; }
+.sections a, .language-menu a {
   padding: 4px 12px; border-radius: 999px; color: var(--ink-soft); text-decoration: none; font-weight: 700; font-size: 0.95rem;
 }
-.sections a[aria-current], .languages a[aria-current] { background: var(--ink); color: var(--card); }
+.sections a[aria-current], .language-menu a[aria-current] { background: var(--ink); color: var(--card); }
+.languages { position: relative; }
+.languages summary {
+  list-style: none; cursor: pointer; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--line);
+  background: var(--card); font-weight: 700; font-size: 0.95rem; white-space: nowrap;
+}
+.languages summary::-webkit-details-marker { display: none; }
+.language-menu {
+  position: absolute; inset-inline-end: 0; top: calc(100% + 6px); z-index: 10;
+  display: grid; grid-template-columns: repeat(2, minmax(130px, 1fr)); gap: 2px; padding: 8px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow);
+  max-height: 70vh; overflow: auto;
+}
 
 main { max-width: 1120px; margin: 0 auto; padding: 24px 16px 48px; }
 .foot { text-align: center; color: var(--ink-soft); font-size: 0.85rem; padding: 24px 16px 40px; }
@@ -93,7 +105,7 @@ main { max-width: 1120px; margin: 0 auto; padding: 24px 16px 48px; }
 .as-of { margin-top: 6px !important; font-weight: 700; }
 section { margin-top: 28px; }
 .news { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 18px 22px; }
-.post-list { margin: 0; padding-left: 1.2em; }
+.post-list { margin: 0; padding-inline-start: 1.2em; }
 .post-list li { margin: 4px 0; }
 
 .legend { color: var(--ink-soft); margin: 0 0 10px; }
@@ -129,7 +141,7 @@ section { margin-top: 28px; }
 .role-ranged { background: var(--ranged); }
 .role-support { background: var(--support); }
 .stamp {
-  position: absolute; top: -8px; left: -6px; transform: rotate(-9deg);
+  position: absolute; top: -8px; inset-inline-start: -6px; transform: rotate(-9deg);
   background: var(--stamp); color: #fff; border: 2px solid #fff; border-radius: 999px;
   padding: 0 10px; font: 800 0.8rem/1.6 "Baloo 2", system-ui, sans-serif; letter-spacing: 0.04em;
 }
@@ -143,11 +155,11 @@ section { margin-top: 28px; }
 .identity { margin: 0 0 10px; }
 .lineage { margin: 0 0 14px; font-weight: 700; }
 .stats { width: 100%; border-collapse: collapse; background: var(--card); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
-.stats th, .stats td { padding: 8px 14px; text-align: left; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+.stats th, .stats td { padding: 8px 14px; text-align: start; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
 .stats thead th { color: var(--ink-soft); font-size: 0.85rem; }
-.stats thead th + th { text-align: right; }
+.stats thead th + th { text-align: end; }
 .stats tbody tr:last-child th, .stats tbody tr:last-child td { border-bottom: 0; }
-.stats td { text-align: right; }
+.stats td { text-align: end; }
 .note { color: var(--ink-soft); font-size: 0.85rem; }
 .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
 .skill { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 16px 20px; }
@@ -159,7 +171,7 @@ section { margin-top: 28px; }
 .post h1 { font-size: clamp(1.7rem, 4.5vw, 2.3rem); }
 .post h2 { margin-top: 1.6em; padding-top: 0.6em; border-top: 1px solid var(--line); }
 .post h3 { margin-top: 1.2em; }
-.post ul { padding-left: 1.3em; }
+.post ul { padding-inline-start: 1.3em; }
 .post li { margin: 3px 0; }
 .post figure { margin: 18px 0; }
 .post figure img { border-radius: 12px; }
