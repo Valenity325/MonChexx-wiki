@@ -97,7 +97,6 @@ img { max-width: 100%; height: auto; }
 }
 
 main { max-width: 1120px; margin: 0 auto; padding: 24px 16px 48px; }
-.foot { text-align: center; color: var(--ink-soft); font-size: 0.85rem; padding: 24px 16px 40px; }
 
 .hero { padding: 12px 0 8px; }
 .hero h1 { font-size: clamp(2rem, 5vw, 2.8rem); }
