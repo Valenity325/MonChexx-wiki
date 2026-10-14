@@ -55,7 +55,7 @@
   --radius-lg: 22px;
   --radius-pill: 999px;
   --tap: 40px; /* the least height of anything a finger taps */
-  --tab-bar: 48px; /* a phone's tab bar of sections, above the screen's own bottom inset */
+  --bar-row: calc(var(--tap) + 2 * var(--space-2)); /* a phone's first top bar row and the gap under it */
 
   /* Width: the column every page and the top bar line up on */
   --page-width: 1088px;
@@ -126,6 +126,19 @@ img { max-width: 100%; height: auto; }
 code { font-size: 0.9em; background: var(--bg); padding: 0 var(--space-1); border-radius: 4px; }
 [hidden] { display: none !important; }
 
+/* Read out but not drawn: a title the page's picture already says. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  border: 0;
+  white-space: nowrap;
+}
+
 /* Layout: the one column every page and the top bar line up on, and how a
    page's parts follow one another (kit.document, kit.page_header,
    kit.section, kit.split, kit.columns, kit.grid). */
@@ -143,6 +156,7 @@ code { font-size: 0.9em; background: var(--bg); padding: 0 var(--space-1); borde
 .page { padding-block: var(--space-5) var(--space-7); }
 .page > * + * { margin-block-start: var(--space-6); }
 .page > .crumbs + * { margin-block-start: var(--space-2); }
+.page > .visually-hidden + * { margin-block-start: 0; }
 
 .page-header {
   display: flex;
@@ -187,12 +201,6 @@ code { font-size: 0.9em; background: var(--bg); padding: 0 var(--space-1); borde
   gap: var(--grid-gap);
 }
 .grid--tiles { --grid-min: clamp(96px, 27vw, 150px); --grid-gap: clamp(var(--space-2), 2vw, var(--space-3)); }
-
-/* A phone's tab bar of sections covers the bottom of the screen: the page's
-   end clears it. */
-@media (max-width: 600px) {
-  .page { padding-block-end: calc(var(--space-7) + var(--tab-bar) + 2 * var(--space-2) + env(safe-area-inset-bottom)); }
-}
 
 @media (max-width: 720px) {
   .page > * + * { margin-block-start: var(--space-5); }
@@ -300,39 +308,32 @@ code { font-size: 0.9em; background: var(--bg); padding: 0 var(--space-1); borde
 }
 .menu__list .pill { padding-inline: var(--space-2); white-space: normal; }
 
-/* On a phone the sections are a tab bar along the bottom of the screen,
-   in reach of a thumb, each tab an equal share of it however long its words
-   are in a language; the top bar keeps the wiki's name and the language. A
-   blur behind the top bar would hold the tab bar inside it, so on a phone
-   the top bar is plain. */
+/* On a phone the top bar is two rows: the wiki's name and the language,
+   then the tabs, each an equal share of the row however long its words are
+   in a language (the user: 「상단에 탭 구분 있는거 좋아」). Scrolling takes
+   the first row away and keeps the tabs: the bar sticks that row's height
+   above the screen. */
 @media (max-width: 600px) {
-  .top-bar { background: var(--surface); -webkit-backdrop-filter: none; backdrop-filter: none; }
-  .top-bar__inner { justify-content: space-between; }
-  /* A long language name ("Bahasa Indonesia") gives way before the wiki's name. */
-  .menu { flex-shrink: 1; min-width: 0; }
-  .menu__button { max-width: 100%; }
+  .top-bar { top: calc(-1 * var(--bar-row)); }
+  .top-bar__inner { flex-wrap: wrap; justify-content: space-between; row-gap: var(--space-2); }
+  .top-bar__brand { order: 1; }
+  .menu { order: 2; }
+  /* A long language name ("Bahasa Indonesia") gives way before the wiki's
+     name: the menu takes what the name leaves and its button shortens. */
+  .menu { flex: 1 1 0; min-width: 0; text-align: end; }
+  .menu__button { max-width: 100%; min-height: var(--tap); }
   .menu__label { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
   .top-bar__nav {
-    position: fixed;
-    inset-inline: 0;
-    bottom: 0;
-    z-index: 5;
+    order: 3;
     display: grid;
+    flex-basis: 100%;
     grid-auto-columns: minmax(0, 1fr);
     grid-auto-flow: column;
-    gap: var(--space-1);
-    height: var(--tab-bar);
-    padding: var(--space-2) var(--space-2) calc(var(--space-2) + env(safe-area-inset-bottom));
-    box-sizing: content-box;
     overflow: visible;
-    background: var(--surface);
-    border-top: 1px solid var(--line);
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
   }
   .top-bar__nav .pill {
     justify-content: center;
-    min-height: 0;
-    padding: 0 var(--space-1);
+    padding: 2px var(--space-1);
     border-radius: var(--radius-md);
     font-size: 0.8125rem;
     line-height: 1.2;
@@ -346,6 +347,22 @@ code { font-size: 0.9em; background: var(--bg); padding: 0 var(--space-1); borde
 
 /* crumbs */
 .crumbs { display: flex; flex-wrap: wrap; gap: var(--space-3); font-weight: 700; }
+
+/* banner: the newest update's picture on the front page */
+.banner {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+.banner__image { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.banner .chips { position: absolute; top: var(--space-3); inset-inline-start: var(--space-3); }
+.banner .chip { padding: 2px var(--space-3); font-size: var(--text-sm); box-shadow: 0 1px 6px rgba(0, 0, 0, 0.35); }
+@media (hover: hover) {
+  .banner { transition: transform 0.12s ease; }
+  .banner:hover { transform: translateY(-2px); }
+}
 
 /* panel */
 .panel { padding: var(--space-4) var(--space-5); }
