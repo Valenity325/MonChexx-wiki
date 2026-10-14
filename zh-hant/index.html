@@ -4,166 +4,27 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MonChexx 維基</title>
-<meta name="description" content="MonChexx 的所有娃娃與更新說明">
-
-<link rel="stylesheet" href="../assets/site.css">
+<meta name="description" content="MonChexx 的所有娃娃、內容更新與更新說明">
+<link rel="stylesheet" href="../assets/site-0b1688c6e49e.css">
 <link rel="icon" type="image/png" href="../assets/icon-ffdae82d8052.png">
 <link rel="apple-touch-icon" href="../assets/icon-ffdae82d8052.png">
 </head>
 <body>
-<header class="bar">
-  <a class="brand" href="index.html"><img src="../assets/icon-ffdae82d8052.png" alt="" width="32" height="32"><span>MonChexx 維基</span></a>
-  <nav class="sections"><a href="index.html" aria-current="page">娃娃</a><a href="patch-notes/index.html">更新說明</a></nav>
-  <details class="languages">
-    <summary aria-label="語言"><span aria-hidden="true">🌐</span> 繁體中文</summary>
-    <nav class="language-menu"><a href="../en/index.html" lang="en">English</a><a href="../ko/index.html" lang="ko">한국어</a><a href="../es/index.html" lang="es">Español</a><a href="../ja/index.html" lang="ja">日本語</a><a href="../zh-hans/index.html" lang="zh-hans">简体中文</a><a href="../zh-hant/index.html" lang="zh-hant" aria-current="true">繁體中文</a><a href="../ar/index.html" lang="ar">العربية</a><a href="../de/index.html" lang="de">Deutsch</a><a href="../fil/index.html" lang="fil">Filipino</a><a href="../fr/index.html" lang="fr">Français</a><a href="../hi/index.html" lang="hi">हिन्दी</a><a href="../id/index.html" lang="id">Bahasa Indonesia</a><a href="../it/index.html" lang="it">Italiano</a><a href="../pl/index.html" lang="pl">Polski</a><a href="../pt/index.html" lang="pt">Português</a><a href="../ru/index.html" lang="ru">Русский</a><a href="../th/index.html" lang="th">ไทย</a><a href="../tr/index.html" lang="tr">Türkçe</a><a href="../uk/index.html" lang="uk">Українська</a><a href="../vi/index.html" lang="vi">Tiếng Việt</a></nav>
-  </details>
+<header class="top-bar">
+<div class="container top-bar__inner">
+<a class="top-bar__brand" href="index.html" aria-label="MonChexx 維基"><img src="../assets/icon-ffdae82d8052.png" alt="" width="32" height="32"><span>MonChexx 維基</span></a>
+<nav class="top-bar__nav" data-scroll-row><a class="pill" href="index.html" aria-current="page">娃娃</a><a class="pill" href="content-updates/index.html">內容更新</a><a class="pill" href="patch-notes/index.html">更新說明</a></nav>
+<details class="menu" data-menu>
+<summary class="pill pill--outline menu__button" aria-label="語言"><span aria-hidden="true">🌐</span><span class="menu__label">繁體中文</span></summary>
+<nav class="menu__list"><a class="pill" href="../en/index.html" lang="en" data-remember-language>English</a><a class="pill" href="../ko/index.html" lang="ko" data-remember-language>한국어</a><a class="pill" href="../es/index.html" lang="es" data-remember-language>Español</a><a class="pill" href="../ja/index.html" lang="ja" data-remember-language>日本語</a><a class="pill" href="../zh-hans/index.html" lang="zh-hans" data-remember-language>简体中文</a><a class="pill" href="../zh-hant/index.html" lang="zh-hant" data-remember-language aria-current="true">繁體中文</a><a class="pill" href="../ar/index.html" lang="ar" data-remember-language>العربية</a><a class="pill" href="../de/index.html" lang="de" data-remember-language>Deutsch</a><a class="pill" href="../fil/index.html" lang="fil" data-remember-language>Filipino</a><a class="pill" href="../fr/index.html" lang="fr" data-remember-language>Français</a><a class="pill" href="../hi/index.html" lang="hi" data-remember-language>हिन्दी</a><a class="pill" href="../id/index.html" lang="id" data-remember-language>Bahasa Indonesia</a><a class="pill" href="../it/index.html" lang="it" data-remember-language>Italiano</a><a class="pill" href="../pl/index.html" lang="pl" data-remember-language>Polski</a><a class="pill" href="../pt/index.html" lang="pt" data-remember-language>Português</a><a class="pill" href="../ru/index.html" lang="ru" data-remember-language>Русский</a><a class="pill" href="../th/index.html" lang="th" data-remember-language>ไทย</a><a class="pill" href="../tr/index.html" lang="tr" data-remember-language>Türkçe</a><a class="pill" href="../uk/index.html" lang="uk" data-remember-language>Українська</a><a class="pill" href="../vi/index.html" lang="vi" data-remember-language>Tiếng Việt</a></nav>
+</details>
+</div>
 </header>
-<main>
-<section class="hero">
-  <h1>MonChexx 維基</h1>
-  <p>可查看全部32種娃娃的技能、屬性和更新說明。</p>
-  <p class="as-of">截至第1賽季 · 更新02</p>
-</section>
-<section class="news">
-  <h2>最新更新說明</h2>
-  <ul class="post-list"><li><a href="patch-notes/s01-update-02-balance-and-battle.html">MonChexx 更新說明：平衡調整 · 戰鬥系統</a></li><li><a href="patch-notes/s01-update-02-evolution-surge.html">第1賽季 · 更新02：進化浪潮</a></li></ul>
-</section>
-<section>
-  <h2>全部娃娃</h2>
-  <p class="legend"><span class="stamp stamp-inline">NEW</span> 本次更新的8種新娃娃</p>
-  <div class="filters" role="group" aria-label="定位"><button type="button" class="filter" data-role="" aria-pressed="true">全部</button><button type="button" class="filter" data-role="assassin" aria-pressed="false">刺客</button><button type="button" class="filter" data-role="caster" aria-pressed="false">法師</button><button type="button" class="filter" data-role="fighter" aria-pressed="false">戰士</button><button type="button" class="filter" data-role="ranged" aria-pressed="false">遠程</button><button type="button" class="filter" data-role="support" aria-pressed="false">輔助</button><button type="button" class="filter" data-role="tank" aria-pressed="false">坦克</button></div>
-  <div class="grid"><a class="card" href="dolls/001.html" data-roles="tank">
-  <img src="../assets/portraits/001.png" alt="" loading="lazy" width="160" height="160">
-  <span class="label"><span class="number">001</span> 小骨兵</span>
-  <span class="roles"><span class="role role-tank">坦克</span></span>
-</a><a class="card" href="dolls/002.html" data-roles="fighter">
-  <img src="../assets/portraits/002.png" alt="" loading="lazy" width="160" height="160">
-  <span class="label"><span class="number">002</span> 雙骨兵</span>
-  <span class="roles"><span class="role role-fighter">戰士</span></span>
-</a><a class="card" href="dolls/003.html" data-roles="fighter/caster">
-  <img src="../assets/portraits/003.png" alt="" loading="lazy" width="160" height="160">
-  <span class="label"><span class="number">003</span> 焰仔</span>
-  <span class="roles"><span class="role role-fighter">戰士</span><span class="role role-caster">法師</span></span>
-</a><a class="card" href="dolls/004.html" data-roles="caster/ranged">
-  <img src="../assets/portraits/004.png" alt="" loading="lazy" width="160" height="160">
-  <span class="label"><span class="number">004</span> 焰凰</span>
-  <span class="roles"><span class="role role-caster">法師</span><span class="role role-ranged">遠程</span></span>
-</a><a class="card" href="dolls/005.html" data-roles="support/ranged">
-  <img src="../assets/portraits/005.png" alt="" loading="lazy" width="160" height="160">
-  <span class="label"><span class="number">005</span> 水靈靈</span>
-  <span class="roles"><span class="role role-support">輔助</span><span class="role role-ranged">遠程</span></span>
-</a><a class="card" href="dolls/006.html" data-roles="caster/ranged">
-  <img src="../assets/portraits/006.png" alt="" loading="lazy" width="160" height="160">
-  <span class="label"><span class="number">006</span> 瀾龍</span>
-  <span class="roles"><span class="role role-caster">法師</span><span class="role role-ranged">遠程</span></span>
-</a><a class="card" href="dolls/007.html" data-roles="assassin/ranged">
-  <img src="../assets/portraits/007.png" alt="" loading="lazy" width="160" height="160">
-  <span class="label"><span class="number">007</span> 伏特靈</span>
-  <span class="roles"><span class="role role-assassin">刺客</span><span class="role role-ranged">遠程</span></span>
-</a><a class="card" href="dolls/008.html" data-roles="fighter">
-  <img src="../assets/portraits/008.png" alt="" loading="lazy" width="160" height="160">
-  <span class="label"><span class="number">008</span> 伏特虎</span>
-  <span class="roles"><span class="role role-fighter">戰士</span></span>
-</a><a class="card" href="dolls/009.html" data-roles="assassin">
-  <img src="../assets/portraits/009.png" alt="" loading="lazy" width="160" height="160">
-  <span class="label"><span class="number">009</span> 虛影</span>
-  <span class="roles"><span class="role role-assassin">刺客</span></span>
-</a><a class="card card-new" href="dolls/010.html" data-roles="tank">
-  <span class="stamp">NEW</span><img src="../assets/portraits/010.png" alt="" loading="lazy" width="160" height="160">
-  <span class="label"><span class="number">010</span> 虛影巨靈</span>
-  <span class="roles"><span class="role role-tank">坦克</span></span>
-</a><a class="card" href="dolls/011.html" data-roles="tank/caster">
-  <img src="../assets/portraits/011.png" alt="" loading="lazy" width="160" height="160">
-  <span class="label"><span class="number">011</span> 冰晶仔</span>
-  <span class="roles"><span class="role role-tank">坦克</span><span class="role role-caster">法師</span></span>
-</a><a class="card card-new" href="dolls/012.html" data-roles="tank/fighter">
-  <span class="stamp">NEW</span><img src="../assets/portraits/012.png" alt="" loading="lazy" width="160" height="160">
-  <span class="label"><span class="number">012</span> 冰晶熊</span>
-  <span class="roles"><span class="role role-tank">坦克</span><span class="role role-fighter">戰士</span></span>
-</a><a class="card" href="dolls/016.html" data-roles="support/ranged">
-  <img src="../assets/portraits/016.png" alt="" loading="lazy" width="160" height="160">
-  <span class="label"><span class="number">016</span> 芽芽鳥</span>
-  <span class="roles"><span class="role role-support">輔助</span><span class="role role-ranged">遠程</span></span>
-</a><a class="card" href="dolls/022.html" data-roles="support/ranged">
-  <img src="../assets/portraits/022.png" alt="" loading="lazy" width="160" height="160">
-  <span class="label"><span class="number">022</span> 蜜蜜醬</span>
-  <span class="roles"><span class="role role-support">輔助</span><span class="role role-ranged">遠程</span></span>
-</a><a class="card card-new" href="dolls/023.html" data-roles="support/ranged">
-  <span class="stamp">NEW</span><img src="../assets/portraits/023.png" alt="" loading="lazy" width="160" height="160">
-  <span class="label"><span class="number">023</span> 蜜蜜女王</span>
-  <span class="roles"><span class="role role-support">輔助</span><span class="role role-ranged">遠程</span></span>
-</a><a class="card" href="dolls/026.html" data-roles="support/caster/ranged">
-  <img src="../assets/portraits/026.png" alt="" loading="lazy" width="160" height="160">
-  <span class="label"><span class="number">026</span> 回音翼</span>
-  <span class="roles"><span class="role role-support">輔助</span><span class="role role-caster">法師</span><span class="role role-ranged">遠程</span></span>
-</a><a class="card" href="dolls/027.html" data-roles="caster/ranged">
-  <img src="../assets/portraits/027.png" alt="" loading="lazy" width="160" height="160">
-  <span class="label"><span class="number">027</span> 噪音翼</span>
-  <span class="roles"><span class="role role-caster">法師</span><span class="role role-ranged">遠程</span></span>
-</a><a class="card" href="dolls/028.html" data-roles="tank">
-  <img src="../assets/portraits/028.png" alt="" loading="lazy" width="160" height="160">
-  <span class="label"><span class="number">028</span> 石甲龜</span>
-  <span class="roles"><span class="role role-tank">坦克</span></span>
-</a><a class="card card-new" href="dolls/029.html" data-roles="tank">
-  <span class="stamp">NEW</span><img src="../assets/portraits/029.png" alt="" loading="lazy" width="160" height="160">
-  <span class="label"><span class="number">029</span> 鐵甲龜</span>
-  <span class="roles"><span class="role role-tank">坦克</span></span>
-</a><a class="card" href="dolls/036.html" data-roles="tank/fighter">
-  <img src="../assets/portraits/036.png" alt="" loading="lazy" width="160" height="160">
-  <span class="label"><span class="number">036</span> 毒蝸牛</span>
-  <span class="roles"><span class="role role-tank">坦克</span><span class="role role-fighter">戰士</span></span>
-</a><a class="card" href="dolls/055.html" data-roles="caster/ranged">
-  <img src="../assets/portraits/055.png" alt="" loading="lazy" width="160" height="160">
-  <span class="label"><span class="number">055</span> 毛絨絨</span>
-  <span class="roles"><span class="role role-caster">法師</span><span class="role role-ranged">遠程</span></span>
-</a><a class="card" href="dolls/069.html" data-roles="support/ranged">
-  <img src="../assets/portraits/069.png" alt="" loading="lazy" width="160" height="160">
-  <span class="label"><span class="number">069</span> 孢菇菇</span>
-  <span class="roles"><span class="role role-support">輔助</span><span class="role role-ranged">遠程</span></span>
-</a><a class="card" href="dolls/075.html" data-roles="support/ranged">
-  <img src="../assets/portraits/075.png" alt="" loading="lazy" width="160" height="160">
-  <span class="label"><span class="number">075</span> 鐺鐺</span>
-  <span class="roles"><span class="role role-support">輔助</span><span class="role role-ranged">遠程</span></span>
-</a><a class="card card-new" href="dolls/076.html" data-roles="tank/support">
-  <span class="stamp">NEW</span><img src="../assets/portraits/076.png" alt="" loading="lazy" width="160" height="160">
-  <span class="label"><span class="number">076</span> 鐺鐺巨鐘</span>
-  <span class="roles"><span class="role role-tank">坦克</span><span class="role role-support">輔助</span></span>
-</a><a class="card" href="dolls/097.html" data-roles="support/ranged">
-  <img src="../assets/portraits/097.png" alt="" loading="lazy" width="160" height="160">
-  <span class="label"><span class="number">097</span> 滴答齒輪</span>
-  <span class="roles"><span class="role role-support">輔助</span><span class="role role-ranged">遠程</span></span>
-</a><a class="card" href="dolls/109.html" data-roles="assassin">
-  <img src="../assets/portraits/109.png" alt="" loading="lazy" width="160" height="160">
-  <span class="label"><span class="number">109</span> 軟軟掌</span>
-  <span class="roles"><span class="role role-assassin">刺客</span></span>
-</a><a class="card card-new" href="dolls/110.html" data-roles="tank/assassin">
-  <span class="stamp">NEW</span><img src="../assets/portraits/110.png" alt="" loading="lazy" width="160" height="160">
-  <span class="label"><span class="number">110</span> 鋼鐵掌</span>
-  <span class="roles"><span class="role role-tank">坦克</span><span class="role role-assassin">刺客</span></span>
-</a><a class="card" href="dolls/119.html" data-roles="support/ranged">
-  <img src="../assets/portraits/119.png" alt="" loading="lazy" width="160" height="160">
-  <span class="label"><span class="number">119</span> 晶頭鷹</span>
-  <span class="roles"><span class="role role-support">輔助</span><span class="role role-ranged">遠程</span></span>
-</a><a class="card" href="dolls/131.html" data-roles="ranged">
-  <img src="../assets/portraits/131.png" alt="" loading="lazy" width="160" height="160">
-  <span class="label"><span class="number">131</span> 彈珠鼠</span>
-  <span class="roles"><span class="role role-ranged">遠程</span></span>
-</a><a class="card card-new" href="dolls/132.html" data-roles="ranged">
-  <span class="stamp">NEW</span><img src="../assets/portraits/132.png" alt="" loading="lazy" width="160" height="160">
-  <span class="label"><span class="number">132</span> 雷射鼠</span>
-  <span class="roles"><span class="role role-ranged">遠程</span></span>
-</a><a class="card" href="dolls/145.html" data-roles="tank/support">
-  <img src="../assets/portraits/145.png" alt="" loading="lazy" width="160" height="160">
-  <span class="label"><span class="number">145</span> 融融燭</span>
-  <span class="roles"><span class="role role-tank">坦克</span><span class="role role-support">輔助</span></span>
-</a><a class="card card-new" href="dolls/146.html" data-roles="support/ranged">
-  <span class="stamp">NEW</span><img src="../assets/portraits/146.png" alt="" loading="lazy" width="160" height="160">
-  <span class="label"><span class="number">146</span> 燭光祭司</span>
-  <span class="roles"><span class="role role-support">輔助</span><span class="role role-ranged">遠程</span></span>
-</a></div>
-</section>
+<main class="container page">
+<header class="page-header"><h1 class="page-header__title">MonChexx 維基</h1><p class="page-header__lead">可查看全部24種娃娃的技能、屬性、內容更新和更新說明。</p><p class="page-header__note">截至第1賽季 · 更新02</p></header>
+<section class="section"><h2 class="section__title">內容更新</h2><div class="panel"><ul class="entry-list"><li><a class="entry" href="content-updates/s01-update-02-evolution-surge.html"><span class="chips"><span class="chip" data-tone="upcoming">即將推出</span></span><span class="entry__title">第1賽季 · 更新02：進化浪潮</span></a></li></ul></div></section><section class="section"><h2 class="section__title">更新說明</h2><div class="panel"><ul class="entry-list"><li><a class="entry" href="patch-notes/s01-update-02-balance-and-battle.html"><span class="entry__title">MonChexx 更新說明：平衡調整 · 戰鬥系統</span></a></li></ul></div></section>
+<section class="section"><h2 class="section__title">全部娃娃</h2><div class="filter-bar" role="group" aria-label="定位" data-filter="roles"><button type="button" class="pill pill--outline" data-filter-value="" aria-pressed="true">全部</button><button type="button" class="pill pill--outline" data-filter-value="assassin" aria-pressed="false">刺客</button><button type="button" class="pill pill--outline" data-filter-value="caster" aria-pressed="false">法師</button><button type="button" class="pill pill--outline" data-filter-value="fighter" aria-pressed="false">戰士</button><button type="button" class="pill pill--outline" data-filter-value="ranged" aria-pressed="false">遠程</button><button type="button" class="pill pill--outline" data-filter-value="support" aria-pressed="false">輔助</button><button type="button" class="pill pill--outline" data-filter-value="tank" aria-pressed="false">坦克</button></div><div class="grid grid--tiles"><a class="tile" href="dolls/001.html" data-roles="tank"><span class="tile__number">001</span><img class="tile__image" src="../assets/portraits/001-small.webp" alt="" loading="lazy" width="160" height="160"><span class="tile__title">小骨兵</span><span class="chips chips--center"><span class="chip" data-tone="tank">坦克</span></span></a><a class="tile" href="dolls/002.html" data-roles="fighter"><span class="tile__number">002</span><img class="tile__image" src="../assets/portraits/002-small.webp" alt="" loading="lazy" width="160" height="160"><span class="tile__title">雙骨兵</span><span class="chips chips--center"><span class="chip" data-tone="fighter">戰士</span></span></a><a class="tile" href="dolls/003.html" data-roles="fighter/caster"><span class="tile__number">003</span><img class="tile__image" src="../assets/portraits/003-small.webp" alt="" loading="lazy" width="160" height="160"><span class="tile__title">焰仔</span><span class="chips chips--center"><span class="chip" data-tone="fighter">戰士</span><span class="chip" data-tone="caster">法師</span></span></a><a class="tile" href="dolls/004.html" data-roles="caster/ranged"><span class="tile__number">004</span><img class="tile__image" src="../assets/portraits/004-small.webp" alt="" loading="lazy" width="160" height="160"><span class="tile__title">焰凰</span><span class="chips chips--center"><span class="chip" data-tone="caster">法師</span><span class="chip" data-tone="ranged">遠程</span></span></a><a class="tile" href="dolls/005.html" data-roles="support/ranged"><span class="tile__number">005</span><img class="tile__image" src="../assets/portraits/005-small.webp" alt="" loading="lazy" width="160" height="160"><span class="tile__title">水靈靈</span><span class="chips chips--center"><span class="chip" data-tone="support">輔助</span><span class="chip" data-tone="ranged">遠程</span></span></a><a class="tile" href="dolls/006.html" data-roles="caster/ranged"><span class="tile__number">006</span><img class="tile__image" src="../assets/portraits/006-small.webp" alt="" loading="lazy" width="160" height="160"><span class="tile__title">瀾龍</span><span class="chips chips--center"><span class="chip" data-tone="caster">法師</span><span class="chip" data-tone="ranged">遠程</span></span></a><a class="tile" href="dolls/007.html" data-roles="assassin/ranged"><span class="tile__number">007</span><img class="tile__image" src="../assets/portraits/007-small.webp" alt="" loading="lazy" width="160" height="160"><span class="tile__title">伏特靈</span><span class="chips chips--center"><span class="chip" data-tone="assassin">刺客</span><span class="chip" data-tone="ranged">遠程</span></span></a><a class="tile" href="dolls/008.html" data-roles="fighter"><span class="tile__number">008</span><img class="tile__image" src="../assets/portraits/008-small.webp" alt="" loading="lazy" width="160" height="160"><span class="tile__title">伏特虎</span><span class="chips chips--center"><span class="chip" data-tone="fighter">戰士</span></span></a><a class="tile" href="dolls/009.html" data-roles="assassin"><span class="tile__number">009</span><img class="tile__image" src="../assets/portraits/009-small.webp" alt="" loading="lazy" width="160" height="160"><span class="tile__title">虛影</span><span class="chips chips--center"><span class="chip" data-tone="assassin">刺客</span></span></a><a class="tile" href="dolls/011.html" data-roles="tank/caster"><span class="tile__number">011</span><img class="tile__image" src="../assets/portraits/011-small.webp" alt="" loading="lazy" width="160" height="160"><span class="tile__title">冰晶仔</span><span class="chips chips--center"><span class="chip" data-tone="tank">坦克</span><span class="chip" data-tone="caster">法師</span></span></a><a class="tile" href="dolls/016.html" data-roles="support/ranged"><span class="tile__number">016</span><img class="tile__image" src="../assets/portraits/016-small.webp" alt="" loading="lazy" width="160" height="160"><span class="tile__title">芽芽鳥</span><span class="chips chips--center"><span class="chip" data-tone="support">輔助</span><span class="chip" data-tone="ranged">遠程</span></span></a><a class="tile" href="dolls/022.html" data-roles="support/ranged"><span class="tile__number">022</span><img class="tile__image" src="../assets/portraits/022-small.webp" alt="" loading="lazy" width="160" height="160"><span class="tile__title">蜜蜜醬</span><span class="chips chips--center"><span class="chip" data-tone="support">輔助</span><span class="chip" data-tone="ranged">遠程</span></span></a><a class="tile" href="dolls/026.html" data-roles="support/caster/ranged"><span class="tile__number">026</span><img class="tile__image" src="../assets/portraits/026-small.webp" alt="" loading="lazy" width="160" height="160"><span class="tile__title">回音翼</span><span class="chips chips--center"><span class="chip" data-tone="support">輔助</span><span class="chip" data-tone="caster">法師</span><span class="chip" data-tone="ranged">遠程</span></span></a><a class="tile" href="dolls/027.html" data-roles="caster/ranged"><span class="tile__number">027</span><img class="tile__image" src="../assets/portraits/027-small.webp" alt="" loading="lazy" width="160" height="160"><span class="tile__title">噪音翼</span><span class="chips chips--center"><span class="chip" data-tone="caster">法師</span><span class="chip" data-tone="ranged">遠程</span></span></a><a class="tile" href="dolls/028.html" data-roles="tank"><span class="tile__number">028</span><img class="tile__image" src="../assets/portraits/028-small.webp" alt="" loading="lazy" width="160" height="160"><span class="tile__title">石甲龜</span><span class="chips chips--center"><span class="chip" data-tone="tank">坦克</span></span></a><a class="tile" href="dolls/036.html" data-roles="tank/fighter"><span class="tile__number">036</span><img class="tile__image" src="../assets/portraits/036-small.webp" alt="" loading="lazy" width="160" height="160"><span class="tile__title">毒蝸牛</span><span class="chips chips--center"><span class="chip" data-tone="tank">坦克</span><span class="chip" data-tone="fighter">戰士</span></span></a><a class="tile" href="dolls/055.html" data-roles="caster/ranged"><span class="tile__number">055</span><img class="tile__image" src="../assets/portraits/055-small.webp" alt="" loading="lazy" width="160" height="160"><span class="tile__title">毛絨絨</span><span class="chips chips--center"><span class="chip" data-tone="caster">法師</span><span class="chip" data-tone="ranged">遠程</span></span></a><a class="tile" href="dolls/069.html" data-roles="support/ranged"><span class="tile__number">069</span><img class="tile__image" src="../assets/portraits/069-small.webp" alt="" loading="lazy" width="160" height="160"><span class="tile__title">孢菇菇</span><span class="chips chips--center"><span class="chip" data-tone="support">輔助</span><span class="chip" data-tone="ranged">遠程</span></span></a><a class="tile" href="dolls/075.html" data-roles="support/ranged"><span class="tile__number">075</span><img class="tile__image" src="../assets/portraits/075-small.webp" alt="" loading="lazy" width="160" height="160"><span class="tile__title">鐺鐺</span><span class="chips chips--center"><span class="chip" data-tone="support">輔助</span><span class="chip" data-tone="ranged">遠程</span></span></a><a class="tile" href="dolls/097.html" data-roles="support/ranged"><span class="tile__number">097</span><img class="tile__image" src="../assets/portraits/097-small.webp" alt="" loading="lazy" width="160" height="160"><span class="tile__title">滴答齒輪</span><span class="chips chips--center"><span class="chip" data-tone="support">輔助</span><span class="chip" data-tone="ranged">遠程</span></span></a><a class="tile" href="dolls/109.html" data-roles="assassin"><span class="tile__number">109</span><img class="tile__image" src="../assets/portraits/109-small.webp" alt="" loading="lazy" width="160" height="160"><span class="tile__title">軟軟掌</span><span class="chips chips--center"><span class="chip" data-tone="assassin">刺客</span></span></a><a class="tile" href="dolls/119.html" data-roles="support/ranged"><span class="tile__number">119</span><img class="tile__image" src="../assets/portraits/119-small.webp" alt="" loading="lazy" width="160" height="160"><span class="tile__title">晶頭鷹</span><span class="chips chips--center"><span class="chip" data-tone="support">輔助</span><span class="chip" data-tone="ranged">遠程</span></span></a><a class="tile" href="dolls/131.html" data-roles="ranged"><span class="tile__number">131</span><img class="tile__image" src="../assets/portraits/131-small.webp" alt="" loading="lazy" width="160" height="160"><span class="tile__title">彈珠鼠</span><span class="chips chips--center"><span class="chip" data-tone="ranged">遠程</span></span></a><a class="tile" href="dolls/145.html" data-roles="tank/support"><span class="tile__number">145</span><img class="tile__image" src="../assets/portraits/145-small.webp" alt="" loading="lazy" width="160" height="160"><span class="tile__title">融融燭</span><span class="chips chips--center"><span class="chip" data-tone="tank">坦克</span><span class="chip" data-tone="support">輔助</span></span></a></div></section>
 </main>
-<script src="../assets/site.js"></script>
+<script src="../assets/site-2eacf0557b1d.js"></script>
 </body>
 </html>
