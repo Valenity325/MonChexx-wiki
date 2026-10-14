@@ -141,7 +141,7 @@ code { font-size: 0.9em; background: var(--bg); padding: 0 var(--space-1); borde
 
 /* Layout: the one column every page and the top bar line up on, and how a
    page's parts follow one another (kit.document, kit.page_header,
-   kit.section, kit.split, kit.columns, kit.grid). */
+   kit.section, kit.columns, kit.grid). */
 
 .container {
   width: 100%;
@@ -165,34 +165,27 @@ code { font-size: 0.9em; background: var(--bg); padding: 0 var(--space-1); borde
   gap: var(--space-2);
 }
 .page-header__kicker { color: var(--ink-soft); font-size: var(--text-sm); }
-.page-header__title { font-size: var(--text-title); }
+/* A name longer than its column ("Камнечерепашка" beside the pictures on
+   a tablet) breaks, hyphenated where the language allows. */
+.page-header__title { font-size: var(--text-title); overflow-wrap: anywhere; hyphens: auto; }
 .page-header__lead { max-width: 70ch; }
 .page-header__note { color: var(--ink-soft); font-weight: 700; }
 
 .section { display: flex; flex-direction: column; gap: var(--space-4); }
 .section__title { font-size: var(--text-xl); }
 
-/* A picture beside what it is about; on a phone the picture comes first,
-   smaller, and the rest under it. */
-.split {
-  display: grid;
-  grid-template-columns: minmax(0, var(--aside-width)) minmax(0, 1fr);
-  gap: var(--space-6);
-  align-items: start;
-}
-.split__aside { min-width: 0; }
-.split__body { display: flex; flex-direction: column; gap: var(--space-4); min-width: 0; }
-
-/* Two parts side by side: the side one in the narrow column, under a split's
-   picture, the main one beside it; on a phone the main one comes first. */
+/* Two columns, each its parts one under another: the narrow one (a doll's
+   pictures, then its table) beside the wide one (its head, then its
+   skills), neither waiting for the other's parts. On a phone one column:
+   the narrow one's first part, the wide one's parts, the rest of the
+   narrow one's. */
 .columns {
   display: grid;
   grid-template-columns: minmax(0, var(--aside-width)) minmax(0, 1fr);
   gap: var(--space-6);
   align-items: start;
 }
-.columns__side { grid-column: 1; grid-row: 1; min-width: 0; }
-.columns__main { grid-column: 2; grid-row: 1; min-width: 0; }
+.columns__narrow, .columns__wide { display: flex; flex-direction: column; gap: var(--space-6); min-width: 0; }
 
 /* Items in as many columns as fit: picture tiles, three on a phone. Post
    cards are a feed, one under another on every screen. */
@@ -206,10 +199,9 @@ code { font-size: 0.9em; background: var(--bg); padding: 0 var(--space-1); borde
 
 @media (max-width: 720px) {
   .page > * + * { margin-block-start: var(--space-5); }
-  .split { grid-template-columns: 1fr; gap: var(--space-4); }
-  .split__aside { width: 100%; max-width: 240px; margin-inline: auto; }
-  .columns { grid-template-columns: 1fr; gap: var(--space-5); }
-  .columns__side, .columns__main { grid-column: 1; grid-row: auto; }
+  .columns { display: flex; flex-direction: column; gap: var(--space-5); }
+  .columns__narrow, .columns__wide { display: contents; }
+  .columns__narrow > * + * { order: 1; }
 }
 
 /* The kit's pieces (tools/wiki/kit.py), one block each, in the kit's order. */
@@ -389,6 +381,28 @@ code { font-size: 0.9em; background: var(--bg); padding: 0 var(--space-1); borde
 .prose ul { padding-inline-start: 1.3em; }
 .prose li + li, .prose li > ul { margin-block-start: 3px; }
 .prose figure img { display: block; border-radius: 12px; }
+
+/* doll_heading: a doll's section in a post, its portrait beside its name */
+.doll-heading, .doll-heading__link { display: flex; align-items: center; gap: var(--space-3); }
+.doll-heading__link { color: var(--accent); text-decoration: none; }
+.doll-heading__picture {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+}
+.doll-heading__picture img { display: block; width: 100%; height: 100%; object-fit: contain; }
+/* A long run of words ("Unterstützer/Fernkämpfer") breaks rather than push past a phone's edge. */
+.doll-heading__link, .doll-heading__text { min-width: 0; }
+.doll-heading__text { overflow-wrap: anywhere; hyphens: auto; }
+.doll-heading .chip { flex-shrink: 0; }
+.doll-heading--upcoming .doll-heading__picture img { filter: grayscale(1); opacity: 0.5; }
+.doll-heading--upcoming .doll-heading__text { color: var(--ink-soft); }
+@media (hover: hover) {
+  .doll-heading__link:hover .doll-heading__text { text-decoration: underline; }
+}
 .prose__lead img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
 
 /* entry_list: each link a whole row a finger taps, an arrow at its end. */
@@ -515,9 +529,25 @@ code { font-size: 0.9em; background: var(--bg); padding: 0 var(--space-1); borde
   outline: 3px solid var(--new-edge);
 }
 
-/* frame */
-.frame { position: relative; padding: var(--space-4); border-radius: var(--radius-lg); }
-.frame img { display: block; width: 100%; aspect-ratio: 1; object-fit: contain; }
+/* frame: pictures of one thing on one surface (a doll's portrait and the
+   doll in 3D), one under another; side by side on a phone, where a lone
+   picture keeps to the middle. A label sits in its picture's corner. */
+.frame { position: relative; display: grid; gap: var(--space-4); padding: var(--space-4); border-radius: var(--radius-lg); }
+.frame__view { position: relative; display: block; }
+.frame__view img { display: block; width: 100%; aspect-ratio: 1; object-fit: contain; }
+.frame__view .chip { position: absolute; top: 0; inset-inline-end: 0; background: var(--surface); }
+@media (max-width: 720px) {
+  .frame {
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 240px);
+    justify-content: center;
+    gap: var(--space-3);
+    width: fit-content;
+    max-width: 100%;
+    margin-inline: auto;
+    padding: var(--space-3);
+  }
+}
 
 /* card */
 .card { display: flex; flex-direction: column; gap: var(--space-1); padding: var(--space-4) var(--space-5); }
