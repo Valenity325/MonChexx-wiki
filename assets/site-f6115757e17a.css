@@ -1,0 +1,525 @@
+/* The wiki's design tokens: every colour, type size, space, radius and width
+   the other stylesheets use, so a change here changes it everywhere. Dark
+   mode changes the colours only. */
+:root {
+  color-scheme: light;
+
+  /* Colour */
+  --bg: #e9eef4;
+  --bg-top: #f3f6fa;
+  --surface: #ffffff;
+  --surface-glass: rgba(255, 255, 255, 0.72);
+  --ink: #1e2b3c;
+  --ink-soft: #5d6b7e;
+  --line: #d4dce6;
+  --accent: #2f7de1;
+  --shadow: 0 2px 10px rgba(30, 50, 80, 0.10);
+  --stripe: rgba(30, 50, 80, 0.045);
+  --new-top: #fff7df;
+  --new-bottom: #ffe5a3;
+  --new-edge: #eeb034;
+  --stamp: #e5483d;
+  --upcoming: #c2410c; /* what is planned and not in the game yet (예정) */
+  --role-tank: #2f6fde;
+  --role-fighter: #e0662f;
+  --role-caster: #0e9a8a;
+  --role-assassin: #d63b5e;
+  --role-ranged: #2a9d3f;
+  --role-support: #c48a00;
+
+  /* Type: the body in the reader's own system face, headings in a display
+     face per script (kit.HEADING_FONTS loads it) */
+  --font-body: "Noto Sans KR", system-ui, -apple-system, "Apple SD Gothic Neo", "Segoe UI", sans-serif;
+  --font-display: "Baloo 2", system-ui, sans-serif;
+  --display-weight: 800;
+  --display-tracking: normal;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.5rem;
+  --text-title: clamp(2rem, 6vw, 2.6rem);
+
+  /* Space: every gap and padding is one of these */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+
+  /* Shape */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+  --tap: 40px; /* the least height of anything a finger taps */
+  --bar-row: calc(var(--tap) + 2 * var(--space-2)); /* a phone's first top bar row and the gap under it */
+
+  /* Width: the column every page and the top bar line up on */
+  --page-width: 1088px;
+  --reading-width: 780px;
+  --aside-width: 340px; /* the narrow column beside a page's main one */
+  --gutter: clamp(16px, 4vw, 24px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --bg: #121820;
+    --bg-top: #18202b;
+    --surface: #1d2733;
+    --surface-glass: rgba(29, 39, 51, 0.85);
+    --ink: #e8eef6;
+    --ink-soft: #9fb0c4;
+    --line: #2c3a4a;
+    --accent: #6aa9ff;
+    --shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+    --stripe: rgba(255, 255, 255, 0.04);
+    --new-top: #3a3018;
+    --new-bottom: #4a3a12;
+  }
+}
+
+:lang(ko) {
+  --font-display: "Black Han Sans", "Noto Sans KR", sans-serif;
+  --display-weight: 400;
+  --display-tracking: 0.01em;
+}
+:lang(ar) { --font-display: "Baloo Bhaijaan 2", system-ui, sans-serif; }
+
+/* The document: its background, text, links and pictures. Nothing here keeps
+   a margin of its own: the page's flow (layout.css) and each component space
+   their parts. */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  /* Every page keeps its scrollbar, short ones too, so a page that scrolls
+     and one that does not put the column in the same place where scrollbars
+     take room (a mouse on a Mac, Windows); phones draw theirs over the page. */
+  overflow-y: scroll;
+  /* On the root the background fills the window however short the page,
+     the gradient drawn once at the top. */
+  background: var(--bg) linear-gradient(var(--bg-top), var(--bg) 420px) no-repeat;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font: var(--text-md)/1.65 var(--font-body);
+}
+
+/* Korean breaks between words, not inside them. */
+:lang(ko) { word-break: keep-all; overflow-wrap: break-word; }
+
+h1, h2, h3, p, ul, dl, dd, figure { margin: 0; }
+h1, h2, h3 { line-height: 1.25; }
+h1, h2 {
+  font-family: var(--font-display);
+  font-weight: var(--display-weight);
+  letter-spacing: var(--display-tracking);
+}
+a { color: var(--accent); }
+img { max-width: 100%; height: auto; }
+code { font-size: 0.9em; background: var(--bg); padding: 0 var(--space-1); border-radius: 4px; }
+[hidden] { display: none !important; }
+
+/* Layout: the one column every page and the top bar line up on, and how a
+   page's parts follow one another (kit.document, kit.page_header,
+   kit.section, kit.split, kit.columns, kit.grid). */
+
+.container {
+  width: 100%;
+  max-width: calc(var(--page-width) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.container--reading { max-width: calc(var(--reading-width) + 2 * var(--gutter)); }
+
+/* A page's parts one under another, one gap apart; the crumbs sit close to
+   what they lead back from. */
+.page { padding-block: var(--space-5) var(--space-7); }
+.page > * + * { margin-block-start: var(--space-6); }
+.page > .crumbs + * { margin-block-start: var(--space-2); }
+
+.page-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+.page-header__kicker { color: var(--ink-soft); font-size: var(--text-sm); }
+.page-header__title { font-size: var(--text-title); }
+.page-header__lead { max-width: 70ch; }
+.page-header__note { color: var(--ink-soft); font-weight: 700; }
+
+.section { display: flex; flex-direction: column; gap: var(--space-4); }
+.section__title { font-size: var(--text-xl); }
+
+/* A picture beside what it is about; on a phone the picture comes first,
+   smaller, and the rest under it. */
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, var(--aside-width)) minmax(0, 1fr);
+  gap: var(--space-6);
+  align-items: start;
+}
+.split__aside { min-width: 0; }
+.split__body { display: flex; flex-direction: column; gap: var(--space-4); min-width: 0; }
+
+/* Two parts side by side: the side one in the narrow column, under a split's
+   picture, the main one beside it; on a phone the main one comes first. */
+.columns {
+  display: grid;
+  grid-template-columns: minmax(0, var(--aside-width)) minmax(0, 1fr);
+  gap: var(--space-6);
+  align-items: start;
+}
+.columns__side { grid-column: 1; grid-row: 1; min-width: 0; }
+.columns__main { grid-column: 2; grid-row: 1; min-width: 0; }
+
+/* Items in as many columns as fit: picture tiles, three on a phone. */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(var(--grid-min), 100%), 1fr));
+  gap: var(--grid-gap);
+}
+.grid--tiles { --grid-min: clamp(96px, 27vw, 150px); --grid-gap: clamp(var(--space-2), 2vw, var(--space-3)); }
+
+@media (max-width: 720px) {
+  .page > * + * { margin-block-start: var(--space-5); }
+  .split { grid-template-columns: 1fr; gap: var(--space-4); }
+  .split__aside { width: 100%; max-width: 240px; margin-inline: auto; }
+  .columns { grid-template-columns: 1fr; gap: var(--space-5); }
+  .columns__side, .columns__main { grid-column: 1; grid-row: auto; }
+}
+
+/* The kit's pieces (tools/wiki/kit.py), one block each, in the kit's order. */
+
+/* Surfaces: the pieces drawn as raised cards share one look. */
+.panel, .prose, .tile, .frame, .card, .facts__item, .number-table {
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+}
+
+/* pill: one line a finger taps -- a top bar section, a language, a filter. */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  background: none;
+  color: var(--ink-soft);
+  font: 700 var(--text-sm)/1.4 var(--font-body);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.pill--outline { border-color: var(--line); background: var(--surface); color: var(--ink); }
+.pill[aria-current], .pill[aria-pressed="true"] { border-color: var(--ink); background: var(--ink); color: var(--surface); }
+@media (pointer: coarse) {
+  .pill { min-height: var(--tap); }
+}
+
+/* top_bar */
+.top-bar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--surface-glass);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.top-bar__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding-block: var(--space-2);
+}
+.top-bar__brand {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--ink);
+  font: var(--display-weight) 1.25rem/1.2 var(--font-display);
+  letter-spacing: var(--display-tracking);
+  text-decoration: none;
+}
+.top-bar__brand img { border-radius: var(--radius-sm); }
+/* The sections take the room left between the name and the language menu,
+   and slide sideways when a language's words are longer than that, the
+   side with more to see fading out (site.js marks it). */
+.top-bar__nav {
+  display: flex;
+  flex: 1;
+  gap: var(--space-1);
+  min-width: 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+.top-bar__nav::-webkit-scrollbar { display: none; }
+.top-bar__nav[data-more="right"] { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); }
+.top-bar__nav[data-more="left"] { -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(to left, #000 calc(100% - 28px), transparent); }
+.top-bar__nav[data-more="both"] { -webkit-mask-image: linear-gradient(to right, transparent, #000 28px, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(to right, transparent, #000 28px, #000 calc(100% - 28px), transparent); }
+
+/* language_menu */
+.menu { position: relative; flex-shrink: 0; }
+.menu__button { list-style: none; }
+.menu__button::-webkit-details-marker { display: none; }
+.menu__list {
+  position: absolute;
+  inset-inline-end: 0;
+  top: calc(100% + 6px);
+  z-index: 10;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2px;
+  width: min(320px, calc(100vw - 2 * var(--gutter)));
+  max-height: 70vh;
+  overflow: auto;
+  padding: var(--space-2);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+.menu__list .pill { padding-inline: var(--space-2); white-space: normal; }
+
+/* On a phone the top bar is two rows: the wiki's name and the language,
+   then the tabs, each an equal share of the row however long its words are
+   in a language (the user: 「상단에 탭 구분 있는거 좋아」). Scrolling takes
+   the first row away and keeps the tabs: the bar sticks that row's height
+   above the screen. */
+@media (max-width: 600px) {
+  .top-bar { top: calc(-1 * var(--bar-row)); }
+  .top-bar__inner { flex-wrap: wrap; justify-content: space-between; row-gap: var(--space-2); }
+  .top-bar__brand { order: 1; }
+  .menu { order: 2; }
+  /* A long language name ("Bahasa Indonesia") gives way before the wiki's
+     name: the menu takes what the name leaves and its button shortens. */
+  .menu { flex: 1 1 0; min-width: 0; text-align: end; }
+  .menu__button { max-width: 100%; min-height: var(--tap); }
+  .menu__label { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+  .top-bar__nav {
+    order: 3;
+    display: grid;
+    flex-basis: 100%;
+    grid-auto-columns: minmax(0, 1fr);
+    grid-auto-flow: column;
+    overflow: visible;
+  }
+  .top-bar__nav .pill {
+    justify-content: center;
+    padding: 2px var(--space-1);
+    border-radius: var(--radius-md);
+    font-size: 0.8125rem;
+    line-height: 1.2;
+    text-align: center;
+    white-space: normal;
+  }
+}
+@media (max-width: 360px) {
+  .menu__label { display: none; }
+}
+
+/* crumbs */
+.crumbs { display: flex; flex-wrap: wrap; gap: var(--space-3); font-weight: 700; }
+
+/* panel */
+.panel { padding: var(--space-4) var(--space-5); }
+
+/* prose: a patch post's own markup */
+.prose {
+  padding: var(--space-5) clamp(var(--space-4), 4vw, 40px);
+  border-radius: var(--radius-lg);
+}
+.prose > * + * { margin-block-start: 0.85em; }
+.prose h2 {
+  margin-block-start: 1.6em;
+  padding-block-start: 0.6em;
+  border-top: 1px solid var(--line);
+  font-size: var(--text-xl);
+}
+.prose h3 { margin-block-start: 1.2em; font-size: var(--text-lg); }
+.prose ul { padding-inline-start: 1.3em; }
+.prose li + li, .prose li > ul { margin-block-start: 3px; }
+.prose figure img { display: block; border-radius: 12px; }
+
+/* entry_list: each link a whole row a finger taps, an arrow at its end. */
+.entry-list { padding: 0; list-style: none; }
+.entry-list li + li { border-top: 1px solid var(--line); }
+.entry {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap);
+  padding-block: var(--space-2);
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+}
+.entry::after { content: "›"; flex-shrink: 0; padding-inline-start: var(--space-2); color: var(--ink-soft); font-size: 1.25em; line-height: 1; }
+[dir="rtl"] .entry::after { content: "‹"; }
+.entry .chips { flex-shrink: 0; }
+.entry__title { flex: 1; min-width: 0; color: var(--accent); hyphens: auto; overflow-wrap: anywhere; }
+@media (hover: hover) {
+  .entry:hover .entry__title { text-decoration: underline; }
+}
+
+/* inline_links */
+.inline-links { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-4); font-weight: 700; }
+
+/* chip, chips */
+.chips { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+.chips--center { justify-content: center; }
+.chip {
+  display: inline-block;
+  padding: 0 9px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  background: var(--chip, var(--ink-soft));
+  color: #fff;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  line-height: 1.6;
+}
+.chip--outline { border-color: var(--line); background: transparent; color: var(--ink-soft); }
+.chip[data-tone="tank"] { --chip: var(--role-tank); }
+.chip[data-tone="fighter"] { --chip: var(--role-fighter); }
+.chip[data-tone="caster"] { --chip: var(--role-caster); }
+.chip[data-tone="assassin"] { --chip: var(--role-assassin); }
+.chip[data-tone="ranged"] { --chip: var(--role-ranged); }
+.chip[data-tone="support"] { --chip: var(--role-support); }
+.chip[data-tone="upcoming"] { --chip: var(--upcoming); }
+
+/* stamp */
+.stamp {
+  position: absolute;
+  top: -8px;
+  inset-inline-start: -6px;
+  z-index: 1;
+  padding: 0 10px;
+  border: 2px solid #fff;
+  border-radius: var(--radius-pill);
+  background: var(--stamp);
+  color: #fff;
+  font: 800 0.8rem/1.6 "Baloo 2", system-ui, sans-serif;
+  letter-spacing: 0.04em;
+  transform: rotate(-9deg);
+}
+.stamp--inline { position: static; display: inline-block; transform: none; }
+
+/* note */
+.note { color: var(--ink-soft); font-size: var(--text-sm); }
+
+/* filter_bar */
+.filter-bar { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+
+/* tile */
+.tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-3) 10px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.tile__image { width: 100%; max-width: 160px; aspect-ratio: 1; object-fit: contain; }
+.tile__number {
+  position: absolute;
+  top: 6px;
+  inset-inline-end: 10px;
+  color: var(--ink-soft);
+  font-size: var(--text-xs);
+  font-variant-numeric: tabular-nums;
+}
+.tile__title { font-weight: 700; line-height: 1.3; text-align: center; }
+@media (hover: hover) {
+  .tile { transition: transform 0.12s ease; }
+  .tile:hover { transform: translateY(-2px); }
+}
+@media (max-width: 600px) {
+  .tile { padding: var(--space-2) 6px var(--space-3); }
+  .tile__number { top: 4px; inset-inline-end: 8px; }
+  .tile__title { font-size: var(--text-sm); }
+  .tile .chip { padding-inline: 6px; font-size: 0.6875rem; }
+}
+
+/* The newest update's dolls, on a tile or in a frame. */
+.tile--new, .frame--new {
+  background: linear-gradient(var(--new-top), var(--new-bottom));
+  outline: 3px solid var(--new-edge);
+}
+
+/* frame */
+.frame { position: relative; padding: var(--space-4); border-radius: var(--radius-lg); }
+.frame img { display: block; width: 100%; aspect-ratio: 1; object-fit: contain; }
+
+/* card */
+.card { display: flex; flex-direction: column; gap: var(--space-1); padding: var(--space-4) var(--space-5); }
+.card__kicker {
+  color: var(--ink-soft);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.card__title { font-size: var(--text-lg); }
+
+/* facts */
+/* As many tiles to a row as fit, stretched to fill it. */
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: var(--space-2); }
+.facts__item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px var(--space-3);
+  border-radius: var(--radius-sm);
+  /* A word longer than a phone's tile ("Dystansowy", "Angriffsintervall")
+     breaks, hyphenated where the language allows. */
+  hyphens: auto;
+  overflow-wrap: anywhere;
+}
+.facts__name { color: var(--ink-soft); font-size: var(--text-xs); font-weight: 700; }
+.facts__value { font-weight: 700; line-height: 1.3; font-variant-numeric: tabular-nums; }
+
+/* number_table: striped rather than ruled, so eleven rows stay light; its
+   width is the column's, never its words'. */
+.number-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  overflow: hidden;
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+}
+.number-table th, .number-table td { padding: var(--space-2) var(--space-3); text-align: end; }
+.number-table th:first-child { width: 3.5em; text-align: start; }
+.number-table thead th {
+  vertical-align: bottom;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: var(--text-sm);
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+.number-table tbody th { color: var(--ink-soft); }
+.number-table tbody tr:nth-child(even) { background: var(--stripe); }
+
+/* pager */
+.pager { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-3); font-weight: 700; }
+.pager a { display: inline-flex; align-items: center; gap: 6px; min-height: var(--tap); }
+.pager__next { margin-inline-start: auto; }
+.pager__arrow { display: inline-block; }
+[dir="rtl"] .pager__arrow { transform: scaleX(-1); }
