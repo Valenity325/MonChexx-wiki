@@ -126,6 +126,19 @@ img { max-width: 100%; height: auto; }
 code { font-size: 0.9em; background: var(--bg); padding: 0 var(--space-1); border-radius: 4px; }
 [hidden] { display: none !important; }
 
+/* Read out but not drawn: a title the page's picture already says. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  border: 0;
+  white-space: nowrap;
+}
+
 /* Layout: the one column every page and the top bar line up on, and how a
    page's parts follow one another (kit.document, kit.page_header,
    kit.section, kit.split, kit.columns, kit.grid). */
@@ -143,6 +156,7 @@ code { font-size: 0.9em; background: var(--bg); padding: 0 var(--space-1); borde
 .page { padding-block: var(--space-5) var(--space-7); }
 .page > * + * { margin-block-start: var(--space-6); }
 .page > .crumbs + * { margin-block-start: var(--space-2); }
+.page > .visually-hidden + * { margin-block-start: 0; }
 
 .page-header {
   display: flex;
@@ -334,6 +348,22 @@ code { font-size: 0.9em; background: var(--bg); padding: 0 var(--space-1); borde
 /* crumbs */
 .crumbs { display: flex; flex-wrap: wrap; gap: var(--space-3); font-weight: 700; }
 
+/* banner: the newest update's picture on the front page */
+.banner {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+.banner__image { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.banner .chips { position: absolute; top: var(--space-3); inset-inline-start: var(--space-3); }
+.banner .chip { padding: 2px var(--space-3); font-size: var(--text-sm); box-shadow: 0 1px 6px rgba(0, 0, 0, 0.35); }
+@media (hover: hover) {
+  .banner { transition: transform 0.12s ease; }
+  .banner:hover { transform: translateY(-2px); }
+}
+
 /* panel */
 .panel { padding: var(--space-4) var(--space-5); }
 
@@ -516,6 +546,10 @@ code { font-size: 0.9em; background: var(--bg); padding: 0 var(--space-1); borde
 }
 .number-table tbody th { color: var(--ink-soft); }
 .number-table tbody tr:nth-child(even) { background: var(--stripe); }
+
+/* footer: the day the wiki last changed */
+.site-footer { border-top: 1px solid var(--line); }
+.site-footer__inner { padding-block: var(--space-4) var(--space-6); color: var(--ink-soft); font-size: var(--text-sm); }
 
 /* pager */
 .pager { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-3); font-weight: 700; }
