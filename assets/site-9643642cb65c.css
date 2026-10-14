@@ -194,13 +194,15 @@ code { font-size: 0.9em; background: var(--bg); padding: 0 var(--space-1); borde
 .columns__side { grid-column: 1; grid-row: 1; min-width: 0; }
 .columns__main { grid-column: 2; grid-row: 1; min-width: 0; }
 
-/* Items in as many columns as fit: picture tiles, three on a phone. */
+/* Items in as many columns as fit: picture tiles, three on a phone. Post
+   cards are a feed, one under another on every screen. */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(var(--grid-min), 100%), 1fr));
   gap: var(--grid-gap);
 }
 .grid--tiles { --grid-min: clamp(96px, 27vw, 150px); --grid-gap: clamp(var(--space-2), 2vw, var(--space-3)); }
+.grid--cards { --grid-min: 100%; --grid-gap: var(--space-5); }
 
 @media (max-width: 720px) {
   .page > * + * { margin-block-start: var(--space-5); }
@@ -213,7 +215,7 @@ code { font-size: 0.9em; background: var(--bg); padding: 0 var(--space-1); borde
 /* The kit's pieces (tools/wiki/kit.py), one block each, in the kit's order. */
 
 /* Surfaces: the pieces drawn as raised cards share one look. */
-.panel, .prose, .tile, .frame, .card, .facts__item, .number-table {
+.panel, .prose, .tile, .frame, .card, .post-card, .facts__item, .number-table {
   background: var(--surface);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow);
@@ -348,20 +350,24 @@ code { font-size: 0.9em; background: var(--bg); padding: 0 var(--space-1); borde
 /* crumbs */
 .crumbs { display: flex; flex-wrap: wrap; gap: var(--space-3); font-weight: 700; }
 
-/* banner: the newest update's picture on the front page */
-.banner {
-  position: relative;
-  display: block;
+/* post_card: a post in the front page's feed */
+.post-card {
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow);
+  color: var(--ink);
+  text-decoration: none;
 }
-.banner__image { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
-.banner .chips { position: absolute; top: var(--space-3); inset-inline-start: var(--space-3); }
-.banner .chip { padding: 2px var(--space-3); font-size: var(--text-sm); box-shadow: 0 1px 6px rgba(0, 0, 0, 0.35); }
+.post-card__media { position: relative; display: block; }
+.post-card__image { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.post-card__media .chips { position: absolute; top: var(--space-3); inset-inline-start: var(--space-3); }
+.post-card__media .chip { padding: 2px var(--space-3); font-size: var(--text-sm); box-shadow: 0 1px 6px rgba(0, 0, 0, 0.35); }
+.post-card__body { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-1); padding: var(--space-4) var(--space-5) var(--space-5); }
+.post-card__kicker { color: var(--ink-soft); font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.post-card__title { color: var(--accent); font-size: var(--text-lg); font-weight: 700; line-height: 1.35; overflow-wrap: anywhere; hyphens: auto; }
 @media (hover: hover) {
-  .banner { transition: transform 0.12s ease; }
-  .banner:hover { transform: translateY(-2px); }
+  .post-card { transition: transform 0.12s ease; }
+  .post-card:hover { transform: translateY(-2px); }
 }
 
 /* panel */
@@ -383,6 +389,7 @@ code { font-size: 0.9em; background: var(--bg); padding: 0 var(--space-1); borde
 .prose ul { padding-inline-start: 1.3em; }
 .prose li + li, .prose li > ul { margin-block-start: 3px; }
 .prose figure img { display: block; border-radius: 12px; }
+.prose__lead img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
 
 /* entry_list: each link a whole row a finger taps, an arrow at its end. */
 .entry-list { padding: 0; list-style: none; }
@@ -407,6 +414,7 @@ code { font-size: 0.9em; background: var(--bg); padding: 0 var(--space-1); borde
 
 /* inline_links */
 .inline-links { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-4); font-weight: 700; }
+.inline-links__muted { display: inline-flex; align-items: center; gap: var(--space-1); color: var(--ink-soft); }
 
 /* chip, chips */
 .chips { display: flex; flex-wrap: wrap; gap: var(--space-1); }
@@ -476,8 +484,23 @@ code { font-size: 0.9em; background: var(--bg); padding: 0 var(--space-1); borde
 }
 .tile__title { font-weight: 700; line-height: 1.3; text-align: center; }
 @media (hover: hover) {
-  .tile { transition: transform 0.12s ease; }
-  .tile:hover { transform: translateY(-2px); }
+  a.tile { transition: transform 0.12s ease; }
+  a.tile:hover { transform: translateY(-2px); }
+}
+/* An announced doll not in the game yet: its card stands, dimmed, and
+   leads nowhere; its mark says why. */
+.tile--upcoming { cursor: default; }
+.tile--upcoming .tile__image { filter: grayscale(1); opacity: 0.45; }
+.tile--upcoming .tile__title, .tile--upcoming > .chips { opacity: 0.5; }
+/* The mark sits across the middle of the dimmed picture, clear of the number
+   in the corner however long its word is in a language. */
+.tile__mark {
+  position: absolute;
+  inset-inline: var(--space-1);
+  top: 32%;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
 }
 @media (max-width: 600px) {
   .tile { padding: var(--space-2) 6px var(--space-3); }
