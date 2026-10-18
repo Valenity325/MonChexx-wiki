@@ -3,20 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Notes de mise à jour MonChexx : ajustement de Tortugalet · confort de jeu · Wiki MonChexx</title>
+<title>Notes de mise à jour MonChexx : ajustement de Tortugalet · confort de jeu · correction de bug · Wiki MonChexx</title>
 <meta name="description" content="Toutes les peluches de MonChexx, les mises à jour de contenu et les notes de mise à jour">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../assets/site-d3fedeb8f26a.css">
+<link rel="stylesheet" href="../../assets/site-fa9234d41e96.css">
 <link rel="icon" type="image/png" href="../../assets/icon-ffdae82d8052.png">
 <link rel="apple-touch-icon" href="../../assets/icon-ffdae82d8052.png">
 </head>
-<body>
+<body data-term-more="En savoir plus">
 <header class="top-bar">
 <div class="container top-bar__inner">
 <a class="top-bar__brand" href="../index.html" aria-label="Wiki MonChexx"><img src="../../assets/icon-ffdae82d8052.png" alt="" width="32" height="32"><span>Wiki MonChexx</span></a>
-<nav class="top-bar__nav" data-scroll-row><a class="pill" href="../dolls/index.html">Peluches</a><a class="pill" href="../content-updates/index.html">Nouveautés</a><a class="pill" href="index.html" aria-current="page">Notes de mise à jour</a></nav>
+<nav class="top-bar__nav" data-scroll-row><a class="pill" href="../dolls/index.html">Peluches</a><a class="pill" href="../content-updates/index.html">Nouveautés</a><a class="pill" href="index.html" aria-current="page">Notes de mise à jour</a><a class="pill" href="../glossary/index.html">Glossaire</a></nav>
 <details class="menu" data-menu>
 <summary class="pill pill--outline menu__button" aria-label="Langue"><span aria-hidden="true">🌐</span><span class="menu__label">Français</span></summary>
 <nav class="menu__list"><a class="pill" href="../../en/patch-notes/s01-update-05-balance-and-battle.html" lang="en" data-remember-language>English</a><a class="pill" href="../../ko/patch-notes/s01-update-05-balance-and-battle.html" lang="ko" data-remember-language>한국어</a><a class="pill" href="../../es/patch-notes/s01-update-05-balance-and-battle.html" lang="es" data-remember-language>Español</a><a class="pill" href="../../ja/patch-notes/s01-update-05-balance-and-battle.html" lang="ja" data-remember-language>日本語</a><a class="pill" href="../../zh-hans/patch-notes/s01-update-05-balance-and-battle.html" lang="zh-hans" data-remember-language>简体中文</a><a class="pill" href="../../zh-hant/patch-notes/s01-update-05-balance-and-battle.html" lang="zh-hant" data-remember-language>繁體中文</a><a class="pill" href="../../ar/patch-notes/s01-update-05-balance-and-battle.html" lang="ar" data-remember-language>العربية</a><a class="pill" href="../../de/patch-notes/s01-update-05-balance-and-battle.html" lang="de" data-remember-language>Deutsch</a><a class="pill" href="../../fil/patch-notes/s01-update-05-balance-and-battle.html" lang="fil" data-remember-language>Filipino</a><a class="pill" href="../../fr/patch-notes/s01-update-05-balance-and-battle.html" lang="fr" data-remember-language aria-current="true">Français</a><a class="pill" href="../../hi/patch-notes/s01-update-05-balance-and-battle.html" lang="hi" data-remember-language>हिन्दी</a><a class="pill" href="../../id/patch-notes/s01-update-05-balance-and-battle.html" lang="id" data-remember-language>Bahasa Indonesia</a><a class="pill" href="../../it/patch-notes/s01-update-05-balance-and-battle.html" lang="it" data-remember-language>Italiano</a><a class="pill" href="../../pl/patch-notes/s01-update-05-balance-and-battle.html" lang="pl" data-remember-language>Polski</a><a class="pill" href="../../pt/patch-notes/s01-update-05-balance-and-battle.html" lang="pt" data-remember-language>Português</a><a class="pill" href="../../ru/patch-notes/s01-update-05-balance-and-battle.html" lang="ru" data-remember-language>Русский</a><a class="pill" href="../../th/patch-notes/s01-update-05-balance-and-battle.html" lang="th" data-remember-language>ไทย</a><a class="pill" href="../../tr/patch-notes/s01-update-05-balance-and-battle.html" lang="tr" data-remember-language>Türkçe</a><a class="pill" href="../../uk/patch-notes/s01-update-05-balance-and-battle.html" lang="uk" data-remember-language>Українська</a><a class="pill" href="../../vi/patch-notes/s01-update-05-balance-and-battle.html" lang="vi" data-remember-language>Tiếng Việt</a></nav>
@@ -25,21 +25,25 @@
 </header>
 <main class="container container--reading page">
 <nav class="crumbs"><a href="index.html">Notes de mise à jour</a></nav>
-<header class="page-header"><h1 class="page-header__title">Notes de mise à jour MonChexx : ajustement de Tortugalet · confort de jeu</h1></header>
+<header class="page-header"><h1 class="page-header__title">Notes de mise à jour MonChexx : ajustement de Tortugalet · confort de jeu · correction de bug</h1></header>
 <article class="prose">
 <p>Saison 1 · Mise à jour 05 · 18 octobre</p>
 <h2>Changements par peluche</h2>
 <h3 class="doll-heading"><a class="doll-heading__link" href="../dolls/028.html"><span class="doll-heading__picture"><img src="../../assets/portraits/028-small.webp" alt="" loading="lazy" width="48" height="48"></span><span class="doll-heading__text">Tortugalet</span></a></h3>
-<ul><li><strong>Première carapace :</strong> Le bouclier obtenu au début du combat passe de 10 % à 30 % des PV max.
+<ul><li><strong>Première carapace :</strong> Le <a class="term" href="../glossary/index.html#shield" data-tip="Protection qui encaisse les dégâts avant les PV." data-tip-title="Bouclier">bouclier</a> obtenu au début du combat passe de 10 % à 30 % des <a class="term" href="../glossary/index.html#health" data-tip="À 0, la peluche tombe K.O." data-tip-title="PV">PV max</a>.
 </li></ul>
 <h2>Confort de jeu</h2>
 <ul><li>La carte de gain se ferme désormais avec Espace (X à la manette). C&#x27;est la même touche que celle qui insère une pièce dans la machine à pince : appuyer une nouvelle fois lance donc tout de suite la partie suivante. Q (B à la manette) la ferme toujours aussi.
 </li><li>« Voir Mes peluches » sur la carte de gain se trouve désormais sur L (← à la manette).
 </li><li>La Pince collante apparaît désormais avant la Pince géante dans la liste des pinces et dans « Changer de pince ».
 </li></ul>
+<h2>Corrections de bugs</h2>
+<h3 class="doll-heading"><a class="doll-heading__link" href="../dolls/004.html"><span class="doll-heading__picture"><img src="../../assets/portraits/004-small.webp" alt="" loading="lazy" width="48" height="48"></span><span class="doll-heading__text">Flammonyx</span></a></h3>
+<ul><li><strong>Siphon de braises :</strong> Dans la mise à jour 02 (14 octobre), la <a class="term" href="../glossary/index.html#passive" data-tip="Capacité qui agit en permanence, ou se déclenche d&#x27;elle-même à des moments précis, sans avoir à être utilisée." data-tip-title="Passif">compétence passive</a> de Flammonyx a été modifiée par erreur en même temps que Braises tenaces de Flamo. C&#x27;est désormais corrigé : Flammonyx a sa propre compétence passive, Siphon de braises, et gagne 25 points de <a class="term" href="../glossary/index.html#mana" data-tip="Quand il est plein, la peluche utilise sa compétence active." data-tip-title="Mana">mana</a> chaque fois qu&#x27;une <a class="term" href="../glossary/index.html#basic" data-tip="L&#x27;attaque qu&#x27;une peluche porte sans cesse à une cible à portée, au rythme de sa vitesse d&#x27;attaque." data-tip-title="Attaque de base">attaque de base</a> touche un ennemi <a class="term" href="../glossary/index.html#burn" data-tip="Subit des dégâts magiques chaque seconde pendant une durée fixée." data-tip-title="Brûlure">brûlé</a>.
+</li></ul>
 </article>
 </main>
 <footer class="site-footer"><div class="container container--reading site-footer__inner">Dernière mise à jour : <time datetime="2026-10-18" data-date>2026-10-18</time></div></footer>
-<script src="../../assets/site-8357ed5d7227.js"></script>
+<script src="../../assets/site-4c3ed34f8a07.js"></script>
 </body>
 </html>
