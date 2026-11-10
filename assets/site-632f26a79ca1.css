@@ -192,6 +192,8 @@ code { font-size: 0.9em; background: var(--bg); padding: 0 var(--space-1); borde
 .grid--tiles { --grid-min: clamp(96px, 27vw, 150px); --grid-gap: clamp(var(--space-2), 2vw, var(--space-3)); }
 .grid--cards { --grid-min: 100%; --grid-gap: var(--space-5); }
 .grid--entries { --grid-min: 320px; --grid-gap: var(--space-4); }
+/* The front page's shortcuts: a group's tabs, three in a row on every screen. */
+.grid--shortcuts { grid-template-columns: repeat(3, minmax(0, 1fr)); --grid-gap: clamp(var(--space-2), 2vw, var(--space-4)); }
 
 @media (max-width: 720px) {
   .page > * + * { margin-block-start: var(--space-5); }
@@ -357,6 +359,9 @@ code { font-size: 0.9em; background: var(--bg); padding: 0 var(--space-1); borde
   .post-card { transition: transform 0.12s ease; }
   .post-card:hover { transform: translateY(-2px); }
 }
+
+/* more: under a short list, the way to the whole of it, at the row's end */
+.more { display: flex; justify-content: flex-end; }
 
 /* panel */
 .panel { padding: var(--space-4) var(--space-5); }
